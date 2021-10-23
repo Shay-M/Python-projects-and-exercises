@@ -8,5 +8,4 @@ def count_chars(my_str):
 
 
 magic_str = "abra cadabra"
-
 print(count_chars(magic_str))

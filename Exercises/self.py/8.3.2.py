@@ -1,3 +1,4 @@
+# create dictionary
 this_dict = {
     "first_name": "Mariah",
     "last_name": "Carey",
@@ -11,7 +12,7 @@ this_dict = {
 הוסיפו את התחביב "Cooking" לסוף רשימת התחביבים.
 הפכו את טיפוס תאריך הלידה לטאפל שכולל 3 מספרים (יום, חודש ושנה - משמאל לימין) והדפיסו אותו.
 הוסיפו מפתח חדש בשם age אשר כולל את גילה של מריה והציגו אותו."""
-inn = int(input("enter: "))
+inn = int(input("enter num for command: "))
 while inn > 0:
     if inn == 1:
         print("last_name: ", this_dict["last_name"])
