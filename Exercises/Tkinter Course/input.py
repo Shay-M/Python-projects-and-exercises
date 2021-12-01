@@ -2,12 +2,13 @@ from tkinter import *
 
 root = Tk()
 
-e = Entry(root, width=55)
-e.pack()
+# create text file
+entry_widget = Entry(root, width=55)
+entry_widget.pack()
 
 
 def my_fun():
-    my_label = Label(root, text="hii, " + e.get())
+    my_label = Label(root, text="hgg, " + entry_widget.get())
     my_label.pack()
 
 
