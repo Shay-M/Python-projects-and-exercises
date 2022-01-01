@@ -1,3 +1,4 @@
+# https://www.youtube.com/watch?v=jnUpSK3D3is
 from tkinter import *
 
 root = Tk()
@@ -15,6 +16,10 @@ def accountant_fun():
         number_of_windows = int(entry_number_of_windows.get())
 
         working_area = float(total_size - (upper_margins + lower_margins))
+
+        if working_area <= window_height:
+            raise TypeError()
+
         list_of_windows = []
 
         for i in range(number_of_windows):
@@ -26,11 +31,10 @@ def accountant_fun():
 
         print(total_size - window_height - lower_margins)
 
-        list_string = ' \n'.join(map(str, list_of_windows))
-        # answer_label.config(text="Calculating:\n" + list_string)
-
     except ValueError:
-        answer_label.config(text="Error!")
+        answer_label.config(text="Error! Invalid values")
+    except TypeError:
+        answer_label.config(text="Error! Size: %s " % working_area)
 
 
 label_total_size = Label(root, text="Total size").grid(row=0, column=0, pady=5)
@@ -56,5 +60,17 @@ answer_Listbox = Listbox(root)
 answer_Listbox.grid(row=10, column=1)
 
 accountant_button = Button(root, text="Calculating", command=accountant_fun).grid(row=8, column=1, pady=20)
+
+
+def clear_fun():
+    entry_total_size.delete(0, 'end')
+    entry_upper_margins.delete(0, 'end')
+    entry_lower_margins.delete(0, 'end')
+    entry_number_of_windows.delete(0, 'end')
+    answer_Listbox.delete(0, 'end')
+    answer_label['text'] = ""
+
+
+Clear_button = Button(root, text="Clear", command=clear_fun).grid(row=9, column=1, pady=10)
 
 root.mainloop()

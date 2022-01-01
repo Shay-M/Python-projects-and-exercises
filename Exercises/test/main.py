@@ -49,3 +49,18 @@ for x in numbers_for_test:
 # if (num === 1) return tr‘UE; :
 # if (mm x 2 1:: a) return false;
 # return isPolerUfTqunc(num null / 2)
+
+
+msg_splited = [1, 2]
+# msg_splited = ["1", "2"]
+words_from_sentence = '#'.join(str(e) for e in msg_splited)
+
+print()
+print(msg_splited)
+
+# ''.join()
+
+print(words_from_sentence)
+
+
+
