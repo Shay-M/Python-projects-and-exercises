@@ -16,7 +16,6 @@ def build_and_send_message(conn, code, data):
     Returns: Nothing
     """
     new_message = chatlib.build_message(code, data)
-    print("new_message:", new_message)
     conn.send(new_message.encode())
 
 
@@ -29,6 +28,7 @@ def recv_message_and_parse(conn):
     If error occured, will return None, None
     """
     full_msg = conn.recv(1024).decode()
+    print("full_msg:", full_msg)
 
     cmd, data = chatlib.parse_message(full_msg)
     return cmd, data
@@ -48,24 +48,23 @@ def error_and_exit(error_msg):
 
 def login(conn):
     username = input("Please enter username: \n")
+    password = input("Please enter password: \n")
     # Implement code
 
-    build_and_send_message(conn, chatlib.PROTOCOL_CLIENT["login_msg"], "")
+    build_and_send_message(conn, chatlib.PROTOCOL_CLIENT["login_msg"], username + "#" + password)
 
-
-# Implement code
-
-pass
+    cmd, data = recv_message_and_parse(conn)
+    # print(cmd)
 
 
 def logout(conn):
-    # Implement code
-    pass
+    build_and_send_message(conn, chatlib.PROTOCOL_CLIENT["logout_msg"], "")
 
 
 def main():
-    # Implement code
-    pass
+    my_socket = connect()
+    login(my_socket)
+    # logout(my_socket)
 
 
 if __name__ == '__main__':

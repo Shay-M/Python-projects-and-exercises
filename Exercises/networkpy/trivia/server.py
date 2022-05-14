@@ -1,4 +1,4 @@
-    # uncompyle6 version 3.7.4
+# uncompyle6 version 3.7.4
 # Python bytecode 3.8 (3413)
 # Decompiled from: Python 2.7.17 (default, Sep 30 2020, 13:38:04) 
 # [GCC 7.5.0]
@@ -8,6 +8,13 @@
 # Compiled at: 2021-01-05 11:42:50
 # Size of source mod 2**32: 16237 bytes
 import socket, random, select
+# Embedded file name: c:\users\yahel\desktop\server_test.py
+# Compiled at: 2021-01-05 11:42:50
+# Size of source mod 2**32: 16237 bytes
+import random
+import select
+import socket
+
 CMD_FIELD_LENGTH = 16
 LENGTH_FIELD_LENGTH = 4
 MAX_DATA_LENGTH = 10 ** LENGTH_FIELD_LENGTH - 1
@@ -15,24 +22,25 @@ MSG_HEADER_LENGTH = CMD_FIELD_LENGTH + 1 + LENGTH_FIELD_LENGTH + 1
 MAX_MSG_LENGTH = MSG_HEADER_LENGTH + MAX_DATA_LENGTH
 DELIMITER = '|'
 DATA_DELIMITER = '#'
-PROTOCOL_CLIENT = {'login_msg':'LOGIN', 
- 'logout_msg':'LOGOUT', 
- 'getscore_msg':'MY_SCORE', 
- 'getlogged_msg':'LOGGED', 
- 'gethighscore_msg':'HIGHSCORE', 
- 'getquestion_msg':'GET_QUESTION', 
- 'sendanswer_msg':'SEND_ANSWER'}
-PROTOCOL_SERVER = {'login_ok_msg':'LOGIN_OK', 
- 'login_failed_msg':'ERROR', 
- 'yourscore_msg':'YOUR_SCORE', 
- 'highscore_msg':'ALL_SCORE', 
- 'logged_msg':'LOGGED_ANSWER', 
- 'correct_msg':'CORRECT_ANSWER', 
- 'wrong_msg':'WRONG_ANSWER', 
- 'question_msg':'YOUR_QUESTION', 
- 'error_msg':'ERROR', 
- 'noquestions_msg':'NO_QUESTIONS'}
+PROTOCOL_CLIENT = {'login_msg': 'LOGIN',
+                   'logout_msg': 'LOGOUT',
+                   'getscore_msg': 'MY_SCORE',
+                   'getlogged_msg': 'LOGGED',
+                   'gethighscore_msg': 'HIGHSCORE',
+                   'getquestion_msg': 'GET_QUESTION',
+                   'sendanswer_msg': 'SEND_ANSWER'}
+PROTOCOL_SERVER = {'login_ok_msg': 'LOGIN_OK',
+                   'login_failed_msg': 'ERROR',
+                   'yourscore_msg': 'YOUR_SCORE',
+                   'highscore_msg': 'ALL_SCORE',
+                   'logged_msg': 'LOGGED_ANSWER',
+                   'correct_msg': 'CORRECT_ANSWER',
+                   'wrong_msg': 'WRONG_ANSWER',
+                   'question_msg': 'YOUR_QUESTION',
+                   'error_msg': 'ERROR',
+                   'noquestions_msg': 'NO_QUESTIONS'}
 ERROR_RETURN = None
+
 
 def build_message(cmd, data):
     """
@@ -58,20 +66,21 @@ def parse_message(full_msg):
         """
     if len(full_msg) < CMD_FIELD_LENGTH + 1 + LENGTH_FIELD_LENGTH + 1:
         return (
-         ERROR_RETURN, ERROR_RETURN)
+            ERROR_RETURN, ERROR_RETURN)
     else:
         cmd_str = full_msg[0:CMD_FIELD_LENGTH]
         length = full_msg[CMD_FIELD_LENGTH + 1:CMD_FIELD_LENGTH + 1 + LENGTH_FIELD_LENGTH]
-        if full_msg[CMD_FIELD_LENGTH] != DELIMITER or full_msg[(CMD_FIELD_LENGTH + LENGTH_FIELD_LENGTH + 1)] != DELIMITER:
+        if full_msg[CMD_FIELD_LENGTH] != DELIMITER or full_msg[
+            (CMD_FIELD_LENGTH + LENGTH_FIELD_LENGTH + 1)] != DELIMITER:
             return (
-             ERROR_RETURN, ERROR_RETURN)
+                ERROR_RETURN, ERROR_RETURN)
         if not length.strip().isdigit():
             return (
-             ERROR_RETURN, ERROR_RETURN)
+                ERROR_RETURN, ERROR_RETURN)
         length = int(length)
         data_str = full_msg[MSG_HEADER_LENGTH:MSG_HEADER_LENGTH + length]
         return len(data_str) == length or (
-         ERROR_RETURN, ERROR_RETURN)
+            ERROR_RETURN, ERROR_RETURN)
     return (cmd_str.strip(), data_str)
 
 
@@ -103,6 +112,7 @@ ERROR_MSG = 'Error! '
 SERVER_PORT = 5678
 CORRECT_ANSWER_POINTS = 5
 WRONG_ANSWER_POINTS = 0
+
 
 def build_and_send_message(conn, cmd, data):
     """
@@ -139,10 +149,10 @@ def load_questions():
     Recieves: -
     Returns: questions dictionary
     """
-    questions = {2313:{'question':'How much is 2+2', 
-      'answers':['3', '4', '2', '1'],  'correct':2}, 
-     4122:{'question':'What is the capital of France?', 
-      'answers':['Lion', 'Marseille', 'Paris', 'Montpellier'],  'correct':3}}
+    questions = {2313: {'question': 'How much is 2+2',
+                        'answers': ['3', '4', '2', '1'], 'correct': 2},
+                 4122: {'question': 'What is the capital of France?',
+                        'answers': ['Lion', 'Marseille', 'Paris', 'Montpellier'], 'correct': 3}}
     return questions
 
 
@@ -152,12 +162,12 @@ def load_user_database():
     Recieves: -
     Returns: user dictionary
     """
-    users = {'test':{'password':'test', 
-      'score':0,  'questions_asked':[]}, 
-     'abc':{'password':'123', 
-      'score':50,  'questions_asked':[]}, 
-     'master':{'password':'master', 
-      'score':200,  'questions_asked':[]}}
+    users = {'test': {'password': 'test',
+                      'score': 0, 'questions_asked': []},
+             'abc': {'password': '123',
+                     'score': 50, 'questions_asked': []},
+             'master': {'password': 'master',
+                        'score': 200, 'questions_asked': []}}
     return users
 
 
@@ -169,7 +179,7 @@ def setup_socket():
     """
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_address = (
-     '', SERVER_PORT)
+        '', SERVER_PORT)
     print(('starting up on {} port {}'.format)(*server_address))
     sock.bind(server_address)
     sock.listen(1)
@@ -354,7 +364,7 @@ def main():
     server_socket = setup_socket()
     client_sockets = []
     rlist, wlist, xlist = select.select([
-     server_socket] + client_sockets, client_sockets, [])
+                                            server_socket] + client_sockets, client_sockets, [])
     for current_socket in rlist:
         if current_socket is server_socket:
             client_socket, client_address = server_socket.accept()
@@ -381,4 +391,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
