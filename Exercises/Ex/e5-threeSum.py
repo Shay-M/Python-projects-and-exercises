@@ -1,6 +1,6 @@
 # Given an integer array , return all the triplets
 # Notice that the solution set must not contain duplicate triplets.
-
+# https://www.youtube.com/watch?v=jzZsG8n2R9A
 # Input: nums = [-1,0,1,2,-1,-4]
 # Output: [[-1,-1,2],[-1,0,1]]
 
@@ -14,8 +14,7 @@ def threeSum(arr, sum):
     result = []  # ask to return list of lists
     arr.sort()  # n log n
 
-# //? https://realpython.com/python-enumerate/
-
+    # //? https://realpython.com/python-enumerate/
     for index, currentValue in enumerate(arr):
 
         if index > 0 and currentValue == arr[index-1]:

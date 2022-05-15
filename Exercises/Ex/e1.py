@@ -50,3 +50,65 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# ----------------------------------------------------------------
+
+# import numpy as np
+
+# l, w = (5, 10)
+# pixels = np.zeros([l, w])
+# pixels = [0] * w
+# x1, y1 = (1, 1)
+# x2, y2 = (1, 1)
+
+
+# if x1 == x2:  # check if not oredenery line.
+#     if y1 != y2:  # if not same point
+#         pixels[:, x1] = 1
+#     else:
+#         print("Can't calculate a line with the same point!!!")
+# else:  # in case
+#     m = ((y2-y1)/(x2-x1))
+#     b = y1 - m*x1
+
+#     def line(x): return int(m*x + b)
+
+#     print(f"({y2}-{y1}) / ({x2}-{x1}) = {y2 - y1} /{x2 - x1}  = {m}")
+
+#     print(f"y = {m}x + {b}")
+#     for x in range(min(x1, x2), max(x1, x2)+1):
+#         y = line(x)
+#         print(x, y)
+#         pixels[l-y-1][x] = 1
+
+# pixels
+
+
+def bresenham(x1, y1, x2, y2):
+
+    m_new = 2 * (y2 - y1)
+    slope_error_new = m_new - (x2 - x1)
+
+    y = y1
+    for x in range(x1, x2+1):
+
+        print("(", x, ",", y, ")\n")
+
+        # Add slope to increment angle formed
+        slope_error_new = slope_error_new + m_new
+
+        # Slope error reached limit, time to
+        # increment y and update slope error.
+        if (slope_error_new >= 0):
+            y = y+1
+            slope_error_new = slope_error_new - 2 * (x2 - x1)
+
+
+# driver function
+if __name__ == '__main__':
+    x1 = -3
+    y1 = 2
+    x2 = 15
+    y2 = 5
+    bresenham(x1, y1, x2, y2)
