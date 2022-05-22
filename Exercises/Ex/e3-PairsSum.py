@@ -3,11 +3,11 @@
 A = [2, 1, 5, 3]
 n = 4  # 3+1
 
+# Create an empty hash map, using an hashmap allows us to store the indices
+# Time Complexity: O(n)
+
 
 def printPairs(arr, arr_size, sum):
-
-    # Create an empty hash map, using an hashmap allows us to store the indices
-    # Time Complexity: O(n)
 
     hashmap = {}
 

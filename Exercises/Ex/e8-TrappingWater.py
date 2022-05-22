@@ -53,29 +53,19 @@ def trap2(height):
     res = 0
 
     while l < r:
+
         if leftMax < rightMax:
+
             l += 1
             leftMax = max(leftMax, height[l])
             res += leftMax - height[l]
+
         else:
+
             r -= 1
             rightMax = max(rightMax, height[r])
             res += rightMax - height[r]
-    return res
 
-    while l <= r:
-        if height[l] < height[r]:
-            if maxleft > height[l]:
-                res += (maxleft-height[l])
-            else:
-                maxleft = height[l]
-            l += 1
-        else:
-            if maxright > height[r]:
-                res += (maxright-height[r])
-            else:
-                maxright = height[r]
-            r -= 1
     return res
 
 
