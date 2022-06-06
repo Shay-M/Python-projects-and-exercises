@@ -3,6 +3,7 @@
 A = [2, 1, 5, 3]
 n = 4  # 3+1
 
+# //* hashmap
 # Create an empty hash map, using an hashmap allows us to store the indices
 # Time Complexity: O(n)
 
