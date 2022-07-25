@@ -1,4 +1,4 @@
-print("hi")
+https://github.com/codingforentrepreneurs/Try-Django
 
 https://code.visualstudio.com/docs/python/tutorial-django <<
 
@@ -21,6 +21,10 @@ python manage.py runserver // Ctrl+C
 
 * Create a Django app  
 
-python manage.py startapp hello
+python manage.py startapp products
 
 (python manage.py createsuperuser)
+
+// after add products folder and all in setting //! each time we change 'modules.py'
+python manage.py makemigrations
+python manage.py migrate
