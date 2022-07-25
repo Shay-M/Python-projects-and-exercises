@@ -1,0 +1,26 @@
+print("hi")
+
+https://code.visualstudio.com/docs/python/tutorial-django <<
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+.venv\scripts\activate // .venv\Scripts\Activate.ps1
+
+# -m pip install Django
+#  pip freeze
+
+
+* Create the Django project
+
+django-admin startproject web_project .
+
+python manage.py migrate
+
+
+python manage.py runserver // Ctrl+C
+
+
+* Create a Django app  
+
+python manage.py startapp hello
+
+(python manage.py createsuperuser)
