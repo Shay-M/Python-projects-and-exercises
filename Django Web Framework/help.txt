@@ -28,3 +28,6 @@ python manage.py startapp products
 // after add products folder and all in setting //! each time we change 'modules.py'
 python manage.py makemigrations
 python manage.py migrate
+
+
+// http://127.0.0.1:8000/admin/
