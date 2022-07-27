@@ -21,4 +21,8 @@ def home_view(request, *args, **kwargs):
 
 
 def about_view(request, *args, **kwargs):
-    return HttpResponse("<h1>hii</h1>")
+    my_context = {
+        "my_title": "About from my_title",
+        "my_list": ['A', 'B', 'C']
+    }
+    return render(request, "about.html", my_context)

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{%block content_area1 %}
+
+<h1>about</h1>
+<p>hi from about</p>
+
+<p>
+    {{my_title}}
+</p>
+
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+</ul>
+
+<ul>
+    {% for my_sub_item in my_list %}
+    <li>{{forloop.counter}} : {{my_sub_item}} </li>
+    {% endfor %}
+</ul>
+
+{%endblock%}
