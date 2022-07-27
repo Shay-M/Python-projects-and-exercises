@@ -38,3 +38,5 @@ python manage.py startapp pages
 
 
 {to add new page : add to urls + views}
+
+https://youtu.be/F5mRW0jo-U4?t=7699
